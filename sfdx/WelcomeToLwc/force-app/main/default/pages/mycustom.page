@@ -1,0 +1,12 @@
+<apex:page controller="MyAccount" >
+<apex:form >
+<apex:inputtext value="{!myaccount.name}" /> 
+<br></br>
+<apex:commandButton value="DoUpdate" action="{!doupdate}"/>
+
+<apex:commandButton value="DoUpsert" action="{!doupsert}"/>
+
+
+</apex:form>
+
+</apex:page>

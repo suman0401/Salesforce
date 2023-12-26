@@ -1,0 +1,11 @@
+<template>
+    <p>Hii i am from parent</p>
+    <lightning-layout multiple-rows>
+     <lightning-layout-item size="4" padding="arround-small">
+        <c-accountsearch onabc={henadledata} onxyz={resetdata}></c-accountsearch>
+     </lightning-layout-item>
+        <lightning-layout-item size="6" padding="arround-small">
+            <c-searchresult totalresult={searchDetails}></c-searchresult>
+        </lightning-layout-item>
+</lightning-layout>
+</template>

@@ -1,0 +1,19 @@
+<apex:page standardController="account" >
+  <apex:form >
+   <apex:pageBlock title="Contact for {!account.name}">
+      <apex:pageblockTable value="{!account.contacts}" var="ac">
+         <apex:column >
+         <apex:outputPanel >  <!--it will act as a boundary for actionSupport-->
+            <apex:actionSupport reRender="ren" event="onmouseover">  
+               {!ac.name}
+                 <apex:param value="{!ac.id}" name="cid"/>
+           </apex:actionSupport>
+           </apex:outputPanel>
+        </apex:column>
+     </apex:pageblockTable>
+   </apex:pageBlock>
+      <apex:outputPanel id="ren">   <!--it will act as a div tag-->
+         <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" />
+       </apex:outputPanel>
+  </apex:form>
+</apex:page>

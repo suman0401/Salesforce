@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!--we can display the record Id by the interface Force:hasRecordId while creating of the component-->
+    Account Id={!v.recordId}
+</aura:component>

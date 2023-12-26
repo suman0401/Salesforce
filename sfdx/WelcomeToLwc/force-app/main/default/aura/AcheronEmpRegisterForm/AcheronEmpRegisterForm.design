@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="eHeading" label="pageHeading" 
+                      datasource="Acheron Emp Registor Form,HCL Employee Register Form"/>
+</design:component>

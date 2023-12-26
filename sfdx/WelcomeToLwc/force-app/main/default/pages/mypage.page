@@ -1,0 +1,22 @@
+<apex:page standardController="account" tabStyle="PageDemo__tab">
+<apex:form >
+<apex:pageBlock title="Accounts">
+
+<apex:pageBlockSection columns="3" title="Accounts Information">
+<apex:inputField value="{!account.name}"/>
+<apex:inputField value="{!account.phone}"/>
+<apex:inputField value="{!account.fax}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection columns="3" title="Company Information">
+<apex:inputField value="{!account.name}" label="Company Name"/>
+<apex:inputField value="{!account.phone}" label="Company phone"/>
+<apex:inputField value="{!account.fax}" label="Company fax"/>
+</apex:pageBlockSection>
+<apex:pageBlockButtons >
+  <apex:commandButton value="{!$Label.Insert}" action="{!save}"/>
+  <apex:commandButton value="cancel" action="{!cancel}"/>
+</apex:pageBlockButtons>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

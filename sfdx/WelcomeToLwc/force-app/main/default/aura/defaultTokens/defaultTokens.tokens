@@ -1,0 +1,4 @@
+<aura:tokens>
+    <aura:token name="divfont" value="Italic"/>
+    <aura:token name="divfontweight" value="bold"/>
+</aura:tokens>

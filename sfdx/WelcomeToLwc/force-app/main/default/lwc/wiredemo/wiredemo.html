@@ -1,0 +1,21 @@
+<template>
+    <lightning-card>
+            <lightning-layout>
+                     <lightning-layout-item padding="around-small" flexibility="auto">
+                         <lightning-input label="Enter Account Name" type="text" onchange={searchAccount} value={searchKey}></lightning-input>
+                         <template if:true={accounts}>
+                             <template for:each={accounts} for:item="account">
+                                 <!--we can give in p tag as key={account.Id}-->
+                                 <p key={account}>
+                                    {account.Name}
+                                    {account.Id}
+                                </p>
+                            </template>
+                        </template>
+                        <template if:false={error} >
+                            {error}
+                        </template>
+                    </lightning-layout-item>
+            </lightning-layout>
+   </lightning-card>
+</template> 

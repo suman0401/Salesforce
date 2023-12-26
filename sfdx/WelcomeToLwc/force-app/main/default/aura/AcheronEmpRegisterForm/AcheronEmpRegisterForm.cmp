@@ -1,0 +1,27 @@
+<aura:component controller="AcheronEmpRegisterForm" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="eHeading" type="String" default="Acheron Emp Registor Form"/>
+    <aura:attribute name="eName" type="String" default=""/>
+    <aura:attribute name="eFatherName" type="String" default=""/>
+    <aura:attribute name="ePreOrg" type="String" default=""/>
+    <aura:attribute name="eDept" type="String" default=""/>
+    <aura:attribute name="eSalary" type="Integer" default=""/>
+    <div class="slds-align_absolute-center">
+      <div class="slds-text-title_bold">
+        <div class="slds-text-heading_large">
+           <div class="slds-m-top_small">
+    			{!v.eHeading}
+           </div>
+         </div>
+       </div>
+    </div>
+    <div class="slds-align_absolute-center">
+      <div class="slds-size_4-of-8">
+    	<lightning:input label="Enter Emp Name" name="empname" value="{!v.eName}"/>
+     	<lightning:input label="Enter Emp Father Name" name="empFathername" value="{!v.eFatherName}"/>
+    	<lightning:input label="Enter Emp Previous Org" name="empPreOrg" value="{!v.ePreOrg}"/>
+     	<lightning:input label="Enter Emp Dept" name="empdept" value="{!v.eDept}"/>
+     	<lightning:input label="Enter Emp Salaray" name="empsal" value="{!v.eSalary}"/>
+    	<lightning:button label="Submit Emp Info" name="Submit" variant="brand" onclick="{!c.dodemo}"/>
+      </div>
+    </div>
+    </aura:component>

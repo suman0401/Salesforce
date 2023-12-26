@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="varType" type="string" default=""/>
+   
+    <aura:registerEvent name="cmpEvent" type="c:Bchild"/>
+     <p> This message is from B Component {!v.varType}</p>
+    <ui:button label="Fire Component" press="{!c.FireEvent}"/>
+</aura:component>

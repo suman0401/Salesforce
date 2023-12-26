@@ -1,0 +1,8 @@
+<apex:page >
+<apex:form >
+<apex:pageBlock >
+
+<apex:detail relatedList="false" /> //to hide the child details we give relatedlist is false
+</apex:pageBlock>
+</apex:form>
+</apex:page>

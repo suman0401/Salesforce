@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="OTMMComponentController" access="global"> <!-- Added access global for installation pacakge-->
+    <aura:attribute name="canvasParameters" type="string" />
+    <aura:attribute name="parameters" type="String" />
+    <aura:attribute name="folderId" type="string" />
+    <aura:attribute name="record" type="Asset" />
+    <aura:attribute name="loaded" type="boolean" default="false"/>
+    <aura:attribute name="emptyFolder" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <force:recordData layoutType="FULL" recordId="{!v.recordId}" targetFields="{!v.record}"
+                      fields="OTMMFolderId__c"
+        recordUpdated="{!c.recordUpdate}" />
+    <lightning:card  variant="Narrow"  title="OTMM" iconName="standard:customer_portal_users">
+            
+            
+               <aura:if isTrue="{!v.loaded}">
+                <force:canvasApp developerName="OTMM_SFDC" width="100%" height="400px"
+                             parameters="{!v.parameters}"/>
+                <aura:set attribute="else">
+                     <aura:if isTrue="{!not(v.emptyFolder)}">
+             				<!--SFDC Component-->
+                         <aura:set attribute="else">
+                             <lightning:spinner variant="brand" size="medium" alternativeText="Loading" />
+                         </aura:set>
+                     </aura:if>
+                </aura:set>
+         		</aura:if>
+        	<!--value{!v.record.OTMMFolderId__c}-->
+            <!--<p slot="footer">Card Footer</p>-->
+   </lightning:card>
+	
+    
+    
+   
+           
+               
+        			
+               
+
+</aura:component>

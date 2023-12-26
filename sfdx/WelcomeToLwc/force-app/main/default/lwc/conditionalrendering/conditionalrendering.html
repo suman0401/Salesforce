@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <template if:true={isShow}>
+            <p> This IS Show</p>
+        </template>
+        <template if:false={isDisplay}>
+            This is Display
+        </template>
+        <template for:each={accounts} for:item="act">
+
+            <p key={act}>{act}</p>
+        </template>
+    </div>
+</template>

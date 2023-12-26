@@ -1,0 +1,9 @@
+<apex:page >
+ <h3>Welcome : {!$user.firstName}</h3>
+ <br></br>
+   <h1>Image From Static Resource</h1>
+   <div style="width:50%">
+     <apex:image url="{!$Resource.myimg}"/>
+   
+   </div>
+</apex:page>

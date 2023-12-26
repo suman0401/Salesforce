@@ -1,0 +1,4 @@
+<aura:component >
+    <lightning:select></lightning:select>
+	
+</aura:component>

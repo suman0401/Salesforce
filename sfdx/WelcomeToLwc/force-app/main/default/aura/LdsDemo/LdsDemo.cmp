@@ -1,0 +1,22 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!--This is to create and edit the record-->
+    <!--<lightning:recordForm objectApiName="Account" layoutType="Full" columns="2"/>-->
+   
+    <!--This is to view the record-->
+   <!-- <lightning:recordviewForm recordId="0015j00000anEjEAAU" objectApiName="Account">
+       <lightning:outputfield fieldName="Name"/>
+       <lightning:outputfield fieldName="Description"/>
+    </lightning:recordviewForm> -->
+    
+    <!--This is edit form -->
+    <lightning:messages/>
+    <lightning:recordEditForm recordId="0015j00000anEjEAAU" objectApiName="Account">
+        <lightning:inputfield fieldName="Name"/>
+        <lightning:inputfield fieldName="Description"/>
+        <lightning:outputfield fieldName="Id"/>
+        <lightning:button type="submit" label="Click Me"/>
+    </lightning:recordEditForm>
+    
+    <!--we can display the record Id by the interface Force:hasRecordId while creating of the component-->
+    Account Id={!v.recordId}
+</aura:component>

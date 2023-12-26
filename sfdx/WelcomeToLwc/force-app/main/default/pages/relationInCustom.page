@@ -1,0 +1,27 @@
+<apex:page standardController="Merchandise__c" >
+<apex:form >
+  <apex:pageBlock title="Merchandise">
+     <apex:pageBlockSection title="Merchandise Info">
+         <apex:pageBlockTable value="{!Merchandise__c.sellItems__r}" var="mc">
+             <apex:column >
+                {!mc.name}
+                <apex:commandLink reRender="ren">
+                <apex:param value="{!mc.id}" name="mid" />
+                </apex:commandLink>
+             
+             </apex:column>
+         
+         
+         </apex:pageBlockTable>     
+     </apex:pageBlockSection>
+     <apex:outputPanel id="ren" >
+         <apex:detail subject="{!$CurrentPage.parameters.mid}" relatedList="false"/>
+     </apex:outputPanel>
+  
+  </apex:pageBlock>
+
+
+</apex:form>
+
+
+</apex:page>

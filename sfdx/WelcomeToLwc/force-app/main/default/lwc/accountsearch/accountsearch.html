@@ -1,0 +1,34 @@
+<template>
+    <div>
+      <p>
+        <lightning-card>
+             <lightning-input name="accountname" type="text" label="Account Name" class="validator" required value={accountname} onchange={handleEvent}>
+
+             </lightning-input> 
+             <lightning-input name="accountphone" type="phone" label="Account Phone" value={accountphone} onchange={handleEvent}>
+
+             </lightning-input> 
+             <lightning-input name="billingstreet" type="text" label="Billing Street" value={billingstreet} onchange={handleEventStreet}>
+
+             </lightning-input> 
+             <lightning-input name="billingcity" type="text" label="Billing City" value={billingcity} onchange={handleEventStreet}>
+
+             </lightning-input> 
+             <lightning-input name="billingstate" type="text" label="Billing State" value={billingstate} onchange={handleEventStreet}>
+             </lightning-input> 
+
+             <lightning-input name="billingzipcode" type="text" label="Billing ZipCode" value={billingzipcode} onchange={handleEventStreet}>
+             </lightning-input>
+             
+             <lightning-layout-item size="12" class="slds-var-p-top_small">
+             <lightning-button class="slds-m-left_x-small" variant="brand" label="SearchAccount" onclick={accountsearch}></lightning-button>
+             </lightning-layout-item>
+
+              <lightning-button class="slds-m-left_x-small" variant="Destructive" label="ResertSearch" onclick={Resetaccount}></lightning-button>
+              
+        </lightning-card>
+  
+      </p>
+    </div>
+    
+</template>

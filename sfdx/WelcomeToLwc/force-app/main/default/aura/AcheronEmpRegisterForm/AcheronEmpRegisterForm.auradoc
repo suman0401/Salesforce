@@ -1,0 +1,9 @@
+<aura:documentation>
+    
+	<aura:description>This is for future reference in employee Details</aura:description>
+    
+	<aura:example name="ExampleName" ref="C:AcheronEmpRegisterForm" label="Acheron Employee Register Form">
+		Inserting values for the Acheron Employee
+	</aura:example>
+
+</aura:documentation>
