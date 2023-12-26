@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Inline Editing in lightning-datatable in LWC Salesforce" icon-name="standard:contact">
+        <template if:true={contacts.data}>
+            <lightning-datatable key-field="Id"
+                                 data={contacts.data} 
+                                 columns={columns} 
+                                 onsave={handleSave}
+                                 draft-values={saveDraftValues} 
+                                 hide-checkbox-column 
+                                 show-row-number-column
+                                 onmouseover={handleMouseover} onmouseout={handleMouseout}>
+                                 <div class="slds-popover__body">
+                                    <lightning-record-form record-id={recordId} object-api-name="Account" layout-type="Compact" columns="1" mode="edit" > </lightning-record-form>
+                                  </div>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

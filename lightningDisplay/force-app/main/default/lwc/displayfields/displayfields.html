@@ -1,0 +1,29 @@
+<template>
+    <lightning-record-view-form
+    object-api-name={objectApiName}
+    record-id={recordId}>
+
+<div class="slds-p-around_medium lgc-bg">  
+      <lightning-output-field field-name={nameField} onmouseover={handleMouseover} onmouseout={handleMouseout}> 
+      <div style="position: absolute; opacity: 1" class="ModelTooltip">
+        <section class="slds-popover slds-popover_panel slds-nubbin_top-left" role="dialog">
+          <div class="slds-popover__header">
+            <header class="slds-media slds-media_center slds-m-bottom_small">
+              <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium slds-hyphenate">Details</h2>
+              </div>
+            </header>
+          </div>
+          <div class="slds-popover__body">
+            <lightning-record-form record-id={recordId} object-api-name={objectApiName} layout-type="Compact" columns="1" mode="edit" field-name={STATUS_FIELD}> </lightning-record-form>
+          </div>
+        </section>
+      </div>
+    </lightning-output-field>
+    
+</div>
+    <lightning-output-field field-name={statusField} > </lightning-output-field>
+</lightning-record-view-form>
+
+
+</template>

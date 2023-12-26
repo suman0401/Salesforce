@@ -1,0 +1,16 @@
+<template>
+	<lightning-card  title="Account Details">
+        <lightning-record-view-form
+                record-id={recordId}
+                object-api-name={objectApiName}>
+                <div class="slds-box">
+                    <!-- Tooltip-->
+                    <div style="display:none;position: absolute;opacity:0" class="ModelTooltip">
+                        <c-compact-layout-on-hover record-id={recordId} ></c-compact-layout-on-hover>
+                    </div>
+                    <lightning-output-field field-name="Name" onmouseout={handleMouseout} onmouseover={handleMouseover}>
+                    </lightning-output-field>
+                </div>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>
