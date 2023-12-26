@@ -1,0 +1,34 @@
+Monitor JOBS:
+
+Monitoring Queue Jobs with the Flex Queue
+1.The Apex Flex queue enables you to submit up to 100 batch jobs for execution. Any jobs that are submitted for execution are in holding status and are placed in the Apex Flex queue. 
+2.Up to 100 batch jobs can be in the holding status.
+3.Jobs are processed first-in first-out—in the order in which they’re submitted. You can look at the current queue order and shuffle the queue, so that you could move an important job to the front, or less important ones to the back.
+4.When system resources become available, the system picks up the next job from the top of the Apex Flex queue and moves it to the batch job queue. The system can process up to five queued or active jobs simultaneously for each organization.
+The status of these moved jobs changes from Holding to Queued. Queued jobs get executed when the system is ready to process new jobs. Like other jobs, you can monitor queued jobs in the Apex Jobs page.
+
+Monitoring Scheduled Jobs
+After an Apex job has been scheduled, you can obtain more information about it by running a SOQL query on CronTrigger.
+ The following sample queries the number of times the job has run, and the date and time when the job is scheduled to run again. 
+It uses a jobID variable which is returned from the System.schedule method.
+CronTrigger ct = [SELECT TimesTriggered, NextFireTime FROM CronTrigger WHERE Id = :jobID];
+
+If you’re performing this query inside the execute method of your schedulable class, you can obtain the ID of the current job by calling getTriggerId on the SchedulableContext argument variable.
+
+public class DoAwesomeStuff implements Schedulable {
+    public void execute(SchedulableContext sc) {
+        // some awesome code
+        CronTrigger ct = [SELECT TimesTriggered, NextFireTime FROM CronTrigger WHERE Id = :sc.getTriggerId()];
+    }
+}
+
+You can also get the job’s name and the job’s type from the CronJobDetail record associated with the CronTrigger record. To do so, use the CronJobDetail relationship when performing a query on CronTrigger.
+ This example retrieves the most recent CronTrigger record with the job name and type from CronJobDetail.
+CronTrigger job = [SELECT Id, CronJobDetail.Id, CronJobDetail.Name, CronJobDetail.JobType FROM CronTrigger ORDER BY CreatedDate DESC LIMIT 1];
+
+Alternatively, you can query CronJobDetail directly to get the job’s name and type. The following example gets the job’s name and type for the CronTrigger record queried in the previous example.
+ The corresponding CronJobDetail record ID is obtained by the CronJobDetail.Id expression on the CronTrigger record.
+CronJobDetail ctd = [SELECT Id, Name, JobType FROM CronJobDetail WHERE Id = :job.CronJobDetail.Id];
+
+And lastly, to obtain the total count of all Apex scheduled jobs, excluding all other scheduled job types, perform the following query. Note the value '7' is specified for the job type, which corresponds to the scheduled Apex job type. See CronJobDetail in the Resources section for a list of all types.
+SELECT COUNT() FROM CronTrigger WHERE CronJobDetail.JobType = '7’

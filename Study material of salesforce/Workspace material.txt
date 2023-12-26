@@ -1,0 +1,27 @@
+What Is a Workspace?
+If your pit stops are on the Moon and Mars, you have a different set of system checks and flight paths for each location. It would be confusing and overwhelming to have information about landing on Mars in front of you while you maneuvered your spaceship toward the Moon. Similarly, workspaces in the Developer Console help you organize information to show just what you need as you work on each of your development tasks. Although it sounds like a fancy term, a workspace is simply a collection of resources, represented by tabs, in the main panel of the Developer Console. You can create a workspace for any group of resources that you use together.
+
+If you’re working on two different projects, you can have the related code, tests, and logs open simultaneously in separate workspaces. 
+For instance, say you’re writing code to update some records for your engineering team, but you also want to check the system details for your navigation team. You can create two workspaces, each of which contains only the resources relevant to the project.
+ Workspaces reduce clutter and make it easier to navigate between different resources.
+
+When you use the Developer Console for the first time, you see the default workspace. Setting up your own workspace is easy. Let’s try it out.
+
+Set Up Your Own Workspace
+Select Workspace | New Workspace and give your workspace a name. In your new workspace, you can create Apex classes, Aura components, Visualforce pages, and more.
+
+You can switch between your workspaces by selecting Workspace | Switch Workspace (1). 
+In this way, you can work with code and analyze logs for each project just by opening a different workspace.
+
+It’s your one-stop solution for a variety of development tasks.
+Navigate, open, create, and edit Apex classes and triggers, Aura components, and Visualforce pages and components.
+Browse packages that you’ve created in your org.
+Generate logs for debugging and analyze them using different perspectives.
+Test your Apex code to ensure that it’s error free.
+Identify and resolve errors by setting checkpoints in your Apex code.
+Write and execute SOQL and SOSL queries to find, create, and update the records in your org.
+
+When Do You Use the Developer Console?
+Now that you’re in the cockpit, you’re probably looking at the different options available to control your Salesforce-powered spaceship. To control a Salesforce org, some of the options available to you are the Salesforce Extensions for Visual Studio Code, the Developer Console, and third-party developer tools like the ones that you can download from AppExchange.
+
+The Developer Console is connected to one org and is browser-based. If you want your changes to be effective immediately and you don’t want to install anything on your computer, we recommend the Developer Console. If you want to connect to multiple orgs, compare or synchronize files, or use version control, the Salesforce Extensions for Visual Studio Code is your best option.

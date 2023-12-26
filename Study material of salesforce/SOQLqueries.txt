@@ -1,0 +1,21 @@
+SOQL with group by:
+SELECT LeadSource, COUNT(Name)
+FROM Lead
+GROUP BY LeadSource
+
+SOQL with having clause
+SELECT LeadSource, COUNT(Name)
+FROM Lead
+GROUP BY LeadSource
+HAVING COUNT(Name) > 100
+
+
+
+SOQL with having clause with aggregate function:
+SELECT Name, Count(Id)
+FROM Account
+GROUP BY Name
+HAVING Count(Id) > 1
+
+Order BY:
+select id,name from account order by name->asc or descending

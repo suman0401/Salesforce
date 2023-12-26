@@ -1,0 +1,62 @@
+<apex:pageBlock title="Contacts">
+    <apex:pageBlockTable value="{!Account.contacts}" var="contact">
+        <apex:column>
+            <apex:outputLink
+                value="{! URLFOR($Action.Contact.Edit, contact.Id) }">
+                Edit
+            </apex:outputLink>
+            &nbsp;
+            <apex:outputLink
+                value="{! URLFOR($Action.Contact.Delete, contact.Id) }">
+                Del
+            </apex:outputLink>
+        </apex:column>
+        <apex:column value="{!contact.Name}"/>
+        <apex:column value="{!contact.Title}"/>
+        <apex:column value="{!contact.Phone}"/>
+    </apex:pageBlockTable>
+</apex:pageBlock>
+
+
+
+<apex:page standardController="Contact" recordSetVar="contacts">
+    <apex:pageBlock title="Contacts List">
+        <!-- Contacts List -->
+        <apex:pageBlockTable value="{! contacts }" var="ct">
+            <apex:column value="{! ct.FirstName }"/>
+            <apex:column value="{! ct.LastName }"/>
+            <apex:column value="{! ct.Email }"/>
+            <apex:column value="{! ct.Account.Name }"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
+
+Add List View Filtering To the List:
+Use {! listViewOptions } to get a list of list view filters available for an object. Use {! filterId } to set the list view filter to use for a standard list controller’s results.
+The standard list controller provides a number of features you can use to alter the display of the list. One of the most powerful is list view filters. You create list view filters declaratively, using clicks instead of code, and the standard list controller lets you use any defined list view filter on the page.
+
+Wrap the entire <apex:pageBlock> in an <apex:form> tag. To change the list view filter for a standard list controller, you need to submit the new value back to the server. The standard way to perform this submit is using a form created using the <apex:form> component.
+In the <apex:pageBlock>tag, add the following attribute.
+id="contacts_list"
+This gives the <apex:pageBlock> a “name” that we can use for a cool Ajax effect, which we’ll explain in a bit.
+After the opening <apex:pageBlock> tag, and above the <apex:pageBlockTable>, add the following markup.
+
+<apex:page standardController="Contact" recordSetVar="contacts">
+    <apex:form>
+        <apex:pageBlock title="Contacts List" id="contacts_list">
+            Filter:
+            <apex:selectList value="{! filterId }" size="1">
+                <apex:selectOptions value="{! listViewOptions }"/>
+                <apex:actionSupport event="onchange" reRender="contacts_list"/>
+            </apex:selectList>
+            <!-- Contacts List -->
+            <apex:pageBlockTable value="{! contacts }" var="ct">
+                <apex:column value="{! ct.FirstName }"/>
+                <apex:column value="{! ct.LastName }"/>
+                <apex:column value="{! ct.Email }"/>
+                <apex:column value="{! ct.Account.Name }"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+

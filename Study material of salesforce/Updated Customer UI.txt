@@ -1,0 +1,25 @@
+<apex:page StandardController="Truck__c" recordSetVar="Truck">
+  <apex:form >
+<apex:pageBlock >
+
+ 
+    <apex:pageBlockTable value="{!Truck}" var="tr">   
+     <apex:column >
+     <apex:image url="{!URLFOR($Resource.MyTruck, 'Truckimg/Truck1.jpg')}" width="100"/>
+       <apex:outputPanel >
+         <apex:actionSupport event="onclick" reRender="ren">
+            {!tr.name}
+        <apex:param value="{!tr.id}" name="tru"/>
+       </apex:actionSupport>
+     </apex:outputPanel>
+     </apex:column>
+    </apex:pageBlockTable>  
+   </apex:pageBlock>
+   
+ <apex:outputPanel id="ren" >
+   <apex:detail subject="{!$CurrentPage.parameters.tru}" relatedList="false"/>
+ </apex:outputPanel>
+   
+   </apex:form>
+  
+</apex:page>

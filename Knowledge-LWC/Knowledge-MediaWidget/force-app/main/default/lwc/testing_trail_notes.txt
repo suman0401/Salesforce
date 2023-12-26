@@ -1,0 +1,53 @@
+                       /*  ID currentRecordId = recordId;
+                         DescribeSObjectResult describeResult = currentRecordId.getSObjectType().getDescribe();
+                        SObjectType objectType = Schema.getGlobalDescribe().get(metadataThreatMappings.SFDC_OBJECT_NAME__c);
+                        Map<String,Schema.SObjectField> fieldMap = objectType.getDescribe().fields.getMap();
+                        List<String> fieldstr=new List<String>(objectType.getDescribe().fields.getMap().keySet());
+                        System.debug('---> '+fieldstr);*/
+                      /*  String query='SELECT FIELDS(ALL) FROM'+describeResult.getName()+'WHERE  id = :currentRecordId LIMIT 200';
+                         List<Sobject> results = Database.query(query);
+                         system.debug('result--->'+results);
+                        String Des=fieldstr.toString();*/
+                      // system.debug('--> '+Des);
+                       // DescribeFieldResult industry = Schema.modelId.containsAny('OTMMFolderId__c').getDescribe();
+                       
+                         //************* by checking the picklist value
+                    /*    String[] values = new String[]{};
+                            String fieldName='Logs__c';
+                        String[] types = new String[]{modelId};
+                            Schema.DescribeSobjectResult[] results = Schema.describeSObjects(types);
+                        for(Schema.DescribeSobjectResult res : results) {
+                            for (Schema.PicklistEntry entry : res.fields.getMap().get(fieldName).getDescribe().getPicklistValues()) {
+                                if (entry.isActive())
+                                {values.add(entry.getValue());
+                                 system.debug('-->'+values);}
+                            }
+                        } */
+                   
+
+                      /*********** flows 
+                        
+                        //Create parameter
+                        Map<String, Object> Params = new Map<String, Object>();
+                        Params.put('RecordId',recordId);
+                        
+                        //create instance of Interview
+                        Flow.Interview.CustomLogs stage = new Flow.Interview.CustomLogs(Params);
+                        
+                        //Invoke start method
+                        stage.start();
+                        
+                        //get value from Flow
+                        string updatedVal=(string)stage.getvariableValue('PicklistValues');
+                        system.debug('PickListVal::: '+updatedVal);
+                        
+                        if(updatedVal.equalsIgnoreCase('Enable')){
+                            LogHandler.logHTTPResponse('CF Log-1', recordId,metadataThreatMappings.SFDC_OBJECT_NAME__c ,metadataResponse.getBody(), createFolderResponse, url);
+                        }*/
+                        
+                       //*********Trying to get all fields
+                             String Objname=metadataThreatMappings.SFDC_OBJECT_NAME__c;
+                           SObjectType objectType = Schema.getGlobalDescribe().get(Objname);
+                        Map<String,Schema.SObjectField> fieldMap = objectType.getDescribe().fields.getMap();
+                          String updatedVal=fieldMap.toString();
+                        System.debug('----------->'+updatedVal); 

@@ -1,0 +1,52 @@
+<template>
+    <div style="max-width: 840px; min-width: 480px;">
+       <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-2">        
+           <lightning-record-edit-form object-api-name=Knowledge__kav record-id={recordId} onsuccess={handleSuccess} density="comfy">
+            <div class="slds-modal__content slds-var-p-around_medium"> 
+                <template if:false={showModal}>
+                     <div class="slds-col slds-size_1-of-2 slds-float_right" >
+                          <lightning-button  style="margin-left: 260px;" variant="brand" label="Link Asset" onclick={linkAsset}></lightning-button>
+                     </div>
+                </template>   
+                <template if:true={showModal}>
+                    <!-- Modal/Popup Box LWC starts here -->
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- Modal/Popup Box LWC body starts here -->
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="width: 135% ;">
+                                <template if:true={showModal}> 
+                    
+                                    <header class="slds-modal__header">
+                                       <h2 class="slds-text-heading_small">Browse Media</h2>
+                                       <lightning-icon class="slds-modal__close" icon-name="utility:close" size="small" onclick={closemodal} style="--sds-c-icon-color-foreground : black; margin-top:40px; margin-right:7px; cursor: pointer;" icon-position="right"></lightning-icon>
+                                    </header>
+                                   
+                                    <div style="height: 500px;width:100%;overflow:scroll;" id="test">
+                                        <!-- <c-mediawidgetintegratorcomponent mediawidgeturl={iframeurl} onassetdata={handleEvent}></c-mediawidgetintegratorcomponent> -->
+                                       <sf_otmm_conn-mediawidgetintegratorcomponent mediawidgeturl={iframeurl} onassetdata={handleEvent}></sf_otmm_conn-mediawidgetintegratorcomponent>   
+                                    </div>
+                               </template>
+                            </div>
+                            <!-- Modal/Popup Box LWC footer starts here -->
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </template>
+            </div>
+            <div class="slds-grid slds-wrap slds-gutters ">
+                <lightning-input-field field-name={fieldName} value={details}></lightning-input-field>
+            </div>
+            <div style="margin-top: 2.8em;">
+            <lightning-button
+                 class ="slds-m-top_small slds-align_absolute-center"
+                 variant="brand"
+                 type="submit"
+                 name="update"
+                 label="Update">
+                </lightning-button>
+            </div>
+            </lightning-record-edit-form>
+        </div> 
+            <!--sldsValidatorIgnoreNextLine -->
+    </div>  
+</template>

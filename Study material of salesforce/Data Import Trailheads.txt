@@ -1,0 +1,3 @@
+From Setup, enter Data Export in the Quick Find box, then select Data Export and Export Now or Schedule Export.
+The Export Now option prepares your files for export immediately. This option is only available if enough time has passed since your last export.
+The Schedule Export option allows you to schedule the export process for weekly or monthly intervals.

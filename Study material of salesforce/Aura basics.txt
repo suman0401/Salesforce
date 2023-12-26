@@ -1,0 +1,39 @@
+Let’s get specific about a few of the biggest differences.
+
+Aura components can fire and receive events to communicate between components. You can work with framework or container events, or define your own. You write event handlers, and the framework takes care of the details of invoking them when the right event occurs. This is huge, and opens up entirely new frontiers in the design of your apps.There’s nothing comparable in Visualforce, unless you roll it yourself. At which point, congratulations, you have your own framework! Now you need an ironic name for it, a GitHub repo, and a hipster hat.
+The Aura component bundle structure has separate artifacts for separate functions and “auto-wires” them together. Being able to group the essential dependencies of a component, while keeping different elements separate, is a terrific organization tool. Value providers and so on makes it easy to use the different elements with minimal ceremony.Again, getting something comparable in Visualforce means you’re writing framework code, not feature code.
+Aura components can be used in more contexts. Indeed, because it’s client-side code, you can use Lightning Out to pull your “Salesforce” features into other, completely not Salesforce apps and contexts—can you say SharePoint? Server-bound Visualforce runs only on Salesforce.
+This list could go on, but it’s probably better to move on to additional concepts. Hopefully by the end of this module, you’ll have a solid idea of why you might want to give Aura components a serious look.
+
+You might have guessed that at least one additional container is the Salesforce Classic container. Here’s a (not necessarily complete) list of distinct containers where your code might run.
+
+Salesforce Classic
+Visualforce
+Salesforce App
+Lightning Experience
+Lightning App Builder (LAB)
+Lightning console apps
+Communities
+Lightning Components for Visualforce (LC4VF)
+Lightning Out
+Lightning for Outlook and Lightning for Gmail
+Stand-alone my.app
+You’re probably thinking two things after reading this list.
+
+That’s a lot of containers. What’s the difference? Why do I care? (The short answer: container services.)
+Wait a minute. Aren’t some of these the same thing? Aren’t LAB pages just Lightning Experience? Why is Visualforce its own container, and how is it different from LC4VF? (The short answer: Russian dolls.)
+
+A container has boundaries. Walls. Barriers. A container keeps inside things in, and outside things out.
+
+This is true of application containers too. With web applications and frameworks the boundaries are frequently based on an HTML iframe, which is enforced by the browser. Code inside the iframe can’t directly access elements outside the iframe.
+
+There are other boundaries. For example, the container itself can enforce a boundary, by trapping events fired inside it.
+
+Here’s the fun part. You can put smaller containers inside of larger containers, creating multiple “layers” to the containment hierarchy. Nesting matryoshka dolls, popularly known as Russian dolls, are a terrific metaphor for application containers for
+You can have Aura components (4) running in a Visualforce page (3) using LC4VF. Then you can add that Visualforce page to Lightning Experience. That’s three containers. Or you can use LAB to add the Visualforce page to a Lightning Page (2), then add that Lightning Page to Lightning Experience (1). That’s four containers. And it’s not hard to hit five, or even six containment layers.
+
+Here’s the important part. Your Aura component code can access only the services of the container it’s running inside of, even if that container is inside of another container.
+
+So that Aura component inside a Visualforce page? It can’t fire Lightning Experience events that work, because the Visualforce container doesn’t understand the events or pass them along to the next container above it, even if you add that Visualforce page to Lightning Experience. The iframe boundary between Visualforce and Lightning Experience blocks those events.
+
+TL;DR: Your component can only count on the services of the container it runs in. If you create a component for multiple contexts, you need multiple code paths to account for different sets of services. See Lightning Components in Visualforce with Lightning Out for an example of this technique.

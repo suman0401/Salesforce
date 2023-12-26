@@ -1,0 +1,116 @@
+FOR TRUCK DRIVER VF:
+
+<apex:page controller="TruckDriver" tabStyle="Truck_Driver__tab" >
+  <apex:form >
+     <apex:pageBlock Title="Truck Details">
+          <apex:pageBlockSection > 
+              <apex:inputField value="{!TruckDriver.Name}"/>         
+              <apex:inputField value="{!TruckDriver.Booking_Status__c}"/>   
+           </apex:pageBlockSection>       
+            <apex:pageBlockButtons >
+         <apex:commandButton value="save" action="{!save}"/>
+         <apex:commandButton immediate="true" value="cancel" action="{!cancel}"/>
+         <apex:commandButton value="PaymentPage" action="{!PaymentPage}"/>
+       </apex:pageBlockButtons>  
+         
+     </apex:pageBlock> 
+  </apex:form>
+</apex:page>
+
+CLASS:
+public  class TruckDriver {
+
+    public PageReference PaymentPage() {
+        return new PageReference('/apex/driverpayment')  ;
+    }
+
+
+ Truck__c tk;
+     public TruckDriver(){
+    
+      id i=apexpages.currentpage().getparameters().get('id');
+      if(i==null){
+         tk=new Truck__c();
+      }
+      else{
+        tk=[select id,name,Booking_Status__c from Truck__c where id=:i];
+      }
+        
+     }
+
+    public PageReference cancel() {
+    
+        return null;
+    }
+
+
+    public PageReference save() {
+        update tk;
+        return null;
+    }
+
+
+
+public Truck__C getTruckDriver(){
+  return tk;
+}
+
+    
+}
+
+
+FOR PAYMENT VF:
+<apex:page controller="DriverPayment" tabStyle="Truck_Driver__tab">
+<apex:form >
+<apex:pageBlock Title="Payment Details">
+
+  <apex:pageBlockSection >
+    <apex:inputField value="{!DriverPayment.name}" />
+    <apex:inputField value="{!DriverPayment.DriverPayment__c}"/>
+  
+  </apex:pageBlockSection>
+  <apex:pageBlockButtons >
+    <apex:commandButton value="Save" action="{!save}"/>
+     <apex:commandButton value="cancel" action="{!cancel}"/>
+     <apex:commandButton value="TruckPage" action="{!TruckPage}"/>
+  </apex:pageBlockButtons>
+
+</apex:pageBlock>
+
+
+</apex:form>
+
+</apex:page>
+
+CLASS:
+public class DriverPayment {
+
+    public PageReference TruckPage() {
+        return new PageReference('/apex/truckdriver') ;
+    }
+
+Payment__c pay;
+    public PageReference cancel() {
+        return null;
+    }
+
+
+    public void save() {
+        update pay;
+    }
+
+   Public DriverPayment (){
+    id i=apexpages.currentpage().getparameters().get('id');
+    if(i==null){
+     pay= new Payment__c();
+    }
+    else{
+      pay=[select id,name,DriverPayment__c from payment__c];
+    }
+   
+   }
+    public Payment__c getDriverPayment() {
+        return pay;
+    }
+
+}

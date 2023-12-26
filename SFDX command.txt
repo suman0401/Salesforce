@@ -1,0 +1,25 @@
+For Scrath ORG:
+sfdx force:org:create --definitionfile config/project-scratch-def.json --targetusername ScratchOrg1
+To See the Password of Scratch ORG:sfdx force:user:display -u suma@otmm.com  
+To open Scratch ORG:sfdx force:org:open
+
+Scrath Org pass : wghRg4aq#puce
+
+
+sfdx force:auth:web:login -d -a TestCov
+sfdx force:package:create --name "DemoTest" --path force-app --packagetype Managed --targetdevhubusername TestCov
+sfdx force:package:version:create --package "DemoTest" --installationkey test1234 --wait 10 -v TestCov --codecoverage
+sfdx force:package:version:create --package "DemoTest" --installationkey *Sparrow0401# --wait 10 -v TestCov --codecoverage
+
+sfdx force:package:version:promote -p DemoTest@1.0.0 -v TestCov
+
+sfdx force:package:install --package "DemoTest__1@0.1.0-2" --targetusername YourORGName --installationkey test1234 --wait 10 --publishwait 10
+
+
+sfdx force:package:version:update --package "Expense Manager@1.2.0-4" --installationkey “HIF83kS8kS7C”
+
+For Test Cases:
+sfdx force:apex:test:run --codecoverage --resultformat human
+For Limit:
+sfdx force:limits:api:display
+

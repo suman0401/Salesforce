@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn='ContentRef'>
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+         <target>lightningCommunity__Page</target>  
+         <target>lightningCommunity__Default</target> 
+         <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default,lightning__FlowScreen" >
+        <!-- configurationEditor="sf_otmm_conn-mediawidgetintegratorcomponent" -->
+        <property label="IframeUrl" name="iframeurl" type="String" default="https://micromm.acheron-tech.com/prod/sfdc/mediawidget/microui.html" ></property>
+        <property label="showModal" name="showModal" type="Boolean" default="false"></property>
+
+        </targetConfig>
+          
+    </targetConfigs>
+    
+</LightningComponentBundle>

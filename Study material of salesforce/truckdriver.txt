@@ -1,0 +1,17 @@
+<apex:page standardController="Truck__c" tabStyle="Truck_Driver__tab" >
+  <apex:form >
+     <apex:pageBlock Title="Truck Details">
+       <apex:pageBlockSection >          
+              <apex:inputField value="{!Truck__c.Booking_Status__c}"/>          
+       </apex:pageBlockSection>
+       
+       <apex:pageBlockSection title="Payment Details">
+         <!-- <apex:pageBlockTable value="{!Truck_Booking__c.Payments__r}" var="tb">
+          
+              <apex:inputFile value="{!tb.ModeOfPayment__c}">
+               </apex:inputFile>
+          </apex:pageBlockTable> -->
+       </apex:pageBlockSection>
+     </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,19 @@
+Parent to chid relation using CommandLink:
+
+<apex:page standardController="account" >
+  <apex:form >
+   <apex:pageBlock title="Contact Info">
+      <apex:pageblockTable value="{!account.contacts}" var="ac">
+         <apex:column >
+            <apex:commandLink reRender="ren"> 
+               {!ac.name}
+                 <apex:param value="{!ac.id}" name="cid"/>
+           </apex:commandlink>
+        </apex:column>
+     </apex:pageblockTable>
+   </apex:pageBlock>
+      <apex:outputPanel id="ren">
+         <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" />
+       </apex:outputPanel>
+  </apex:form>
+</apex:page>

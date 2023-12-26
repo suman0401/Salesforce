@@ -1,0 +1,31 @@
+<apex:page StandardController="Truck__c">
+<apex:form >
+ <apex:pageBlock >
+   
+  <apex:pageBlockSection columns="2">
+  
+     <apex:image url="{!URLFOR($Resource.MyTruck, 'Truckimg/Truck1.jpg')}" width="100"/>
+     
+      <p> Name :   </p>
+      <p> Maximum Load:  </p>
+      <p> Cost: 2000</p> 
+
+     <apex:image url="{!URLFOR($Resource.MyTruck, 'Truckimg/Truck2.jpg')}" width="100"/>
+      <p> Name : Truck 2</p>
+      <p> Maximum Load: 1000</p>
+      <p> Cost: 4000</p>
+      
+      <apex:image url="{!URLFOR($Resource.MyTruck, 'Truckimg/Truck3.jpg')}" width="100"/>
+      <p> Name : Truck 3</p>
+      <p> Maximum Load: 1500</p>
+      <p> Cost: 6000</p>
+      
+     <apex:image url="{!URLFOR($Resource.MyTruck, 'Truckimg/Truck4.jpg')}" width="100"/>
+      <p> Name : Truck 4</p>
+      <p> Maximum Load: 2000</p>
+      <p> Cost: 8000</p> 
+   </apex:pageBlockSection>
+   
+  </apex:pageBlock>
+</apex:form>
+</apex:page>
